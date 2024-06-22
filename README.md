@@ -10,3 +10,8 @@ This project analyzes Indian agriculture data and displays it in tabular format 
    ```bash
    git clone <repository-url>
    cd manufac-analytics
+
+2. Start the project:
+   ```bash
+   yarn install
+   yarn start
