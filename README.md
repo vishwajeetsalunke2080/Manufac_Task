@@ -8,7 +8,7 @@ This project analyzes Indian agriculture data and displays it in tabular format 
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/vishwajeetsalunke2080/Manufac_Task
    cd manufac-analytics
 
 2. Start the project:
