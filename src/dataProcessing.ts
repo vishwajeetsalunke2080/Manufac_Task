@@ -1,3 +1,5 @@
+// type definitions
+
 interface CropData {
   Country: string;
   Year: number;
@@ -19,6 +21,7 @@ interface CropAverageData {
   averageArea: number;
 }
 
+//Parse data from json and arrange properly
 const parseData = (rawData: any[]): CropData[] => {
   return rawData.map(item => ({
     Country: item.Country,
@@ -30,10 +33,12 @@ const parseData = (rawData: any[]): CropData[] => {
   }));
 };
 
+
 const aggregateData = (data: CropData[]): { yearWiseData: AggregatedData[], cropAverageData: CropAverageData[] } => {
   const yearWiseData: AggregatedData[] = [];
   const cropDataMap: { [key: string]: { totalYield: number, totalArea: number, count: number } } = {};
 
+  //using Set Data structure for calc. year wise production
   const years = Array.from(new Set(data.map(item => item.Year)));
   years.forEach(year => {
     const cropsInYear = data.filter(item => item.Year === year);
@@ -73,6 +78,7 @@ const aggregateData = (data: CropData[]): { yearWiseData: AggregatedData[], crop
     });
   });
 
+  //average crop data calculation
   const cropAverageData: CropAverageData[] = Object.keys(cropDataMap).map(cropName => ({
     cropName,
     averageYield: cropDataMap[cropName].totalYield / cropDataMap[cropName].count,
